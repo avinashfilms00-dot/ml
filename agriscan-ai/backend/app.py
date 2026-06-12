@@ -1,6 +1,6 @@
 """AgriScan AI – Flask Application Factory"""
 import os
-from flask import Flask
+from flask import Flask, send_from_directory
 from flask_cors import CORS
 from flask_mail import Mail
 
@@ -11,7 +11,8 @@ mail = Mail()
 
 
 def create_app(config_class=Config):
-    app = Flask(__name__)
+    static_folder = os.path.join(os.path.dirname(__file__), '..', 'frontend', 'dist')
+    app = Flask(__name__, static_folder=static_folder, static_url_path='')
     app.config.from_object(config_class)
 
     # ── Extensions ────────────────────────────────────────────────────────
@@ -44,7 +45,6 @@ def create_app(config_class=Config):
     app.register_blueprint(profile_bp,   url_prefix='/api')
 
     # ── Static uploads ────────────────────────────────────────────────────
-    from flask import send_from_directory
     @app.route('/uploads/<path:filename>')
     def serve_upload(filename):
         return send_from_directory(app.config['UPLOAD_FOLDER'], filename)
@@ -54,6 +54,23 @@ def create_app(config_class=Config):
     def health():
         from utils.ml_engine import model_ready
         return {'status': 'ok', 'model_ready': model_ready()}
+
+    # ── Serve Single Page App ───────────────────────────────────────────────
+    @app.route('/', defaults={'path': ''})
+    @app.route('/<path:path>')
+    def serve_frontend(path):
+        if not app.static_folder or not os.path.isdir(app.static_folder):
+            return {'error': 'Frontend not built. Run: cd ../frontend && npm run build'}, 404
+        
+        file_path = os.path.join(app.static_folder, path)
+        if os.path.isfile(file_path):
+            return send_from_directory(app.static_folder, path)
+        
+        index_path = os.path.join(app.static_folder, 'index.html')
+        if os.path.isfile(index_path):
+            return send_from_directory(app.static_folder, 'index.html')
+        
+        return {'error': 'Frontend not found'}, 404
 
     # ── Create tables ─────────────────────────────────────────────────────
     with app.app_context():
