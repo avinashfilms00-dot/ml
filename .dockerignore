@@ -1,0 +1,10 @@
+.git
+.env
+venv
+**/__pycache__
+**/*.pyc
+agriscan-ai/.env
+agriscan-ai/backend/venv
+agriscan-ai/frontend/node_modules
+agriscan-ai/frontend/dist
+agriscan-ai/backend/uploads
