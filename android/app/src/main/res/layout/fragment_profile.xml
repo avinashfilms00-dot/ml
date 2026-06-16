@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:padding="24dp">
+
+    <!-- Profile Illustration Placeholder -->
+    <ImageView
+        android:layout_width="96dp"
+        android:layout_height="96dp"
+        android:layout_marginTop="32dp"
+        android:src="@android:drawable/sym_def_app_icon"
+        android:contentDescription="Profile Icon" />
+
+    <TextView
+        android:id="@+id/tv_profile_username"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="contractor1"
+        android:textColor="@color/text_primary"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tv_profile_role"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:background="@drawable/bg_role_tag"
+        android:paddingHorizontal="12dp"
+        android:paddingVertical="4dp"
+        android:text="CONTRACTOR"
+        android:textColor="@android:color/white"
+        android:textSize="12sp"
+        android:textStyle="bold" />
+
+    <!-- Contact Details Card -->
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="2dp"
+        app:cardBackgroundColor="@color/surface">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Contact Information"
+                android:textColor="@color/text_secondary"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_profile_email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="Email: contractor1@example.com"
+                android:textColor="@color/text_primary"
+                android:textSize="14sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginVertical="12dp"
+                android:background="@color/border" />
+
+            <TextView
+                android:id="@+id/tv_profile_mobile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Mobile: 9876543210"
+                android:textColor="@color/text_primary"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <!-- Switch Site Action -->
+    <Button
+        android:id="@+id/btn_switch_site"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:layout_marginTop="32dp"
+        android:text="Manage / Switch Sites"
+        android:textColor="@android:color/white"
+        android:backgroundTint="@color/accent"
+        app:cornerRadius="8dp" />
+
+    <!-- Logout Action -->
+    <Button
+        android:id="@+id/btn_logout"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:layout_marginTop="12dp"
+        android:text="Log Out"
+        android:textColor="@android:color/white"
+        android:backgroundTint="@color/error"
+        app:cornerRadius="8dp" />
+
+</LinearLayout>

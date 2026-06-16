@@ -1,0 +1,46 @@
+spring:
+  datasource:
+    url: ${SPRING_DATASOURCE_URL:jdbc:h2:mem:nirman_ledger;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE}
+    username: ${SPRING_DATASOURCE_USERNAME:sa}
+    password: ${SPRING_DATASOURCE_PASSWORD:}
+    driver-class-name: ${SPRING_DATASOURCE_DRIVER:org.h2.Driver}
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+  jpa:
+    defer-datasource-initialization: true
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: true
+    # Auto-detect dialect from the datasource driver
+    database-platform: ${JPA_DIALECT:org.hibernate.dialect.H2Dialect}
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+  sql:
+    init:
+      mode: always
+      data-locations: classpath:data.sql
+
+app:
+  jwt:
+    secret: ${JWT_SECRET:858af8ec30113f8c85fa6d16f8ef1d2e5b7fb85d886f7b3df6c63b7829cfbfb2}
+    expiration-ms: ${JWT_EXPIRATION:86400000} # 24 hours
+  storage:
+    type: ${STORAGE_TYPE:LOCAL} # 'LOCAL' or 'FIREBASE'
+    local-dir: ${LOCAL_STORAGE_DIR:./uploads}
+    firebase-bucket: ${FIREBASE_BUCKET:}
+    firebase-config-path: ${FIREBASE_CONFIG_PATH:}
+
+server:
+  port: 8080
+
+logging:
+  level:
+    org.springframework.security: INFO
+    org.springframework.web: INFO

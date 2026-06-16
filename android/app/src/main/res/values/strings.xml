@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Nirman Ledger</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_attendance">Attendance</string>
+    <string name="title_payroll">Payroll</string>
+    <string name="title_expenses">Expenses</string>
+    <string name="title_reports">Reports</string>
+    <string name="title_profile">Profile</string>
+    <string name="title_sites">Sites</string>
+    <string name="role_contractor">Contractor</string>
+    <string name="role_owner">Owner</string>
+</resources>

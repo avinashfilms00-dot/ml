@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="8dp"
+    android:layout_marginVertical="4dp"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="1dp"
+    app:cardBackgroundColor="@color/surface">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="12dp">
+
+        <TextView
+            android:id="@+id/tv_att_worker_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ramesh Kumar"
+            android:textColor="@color/text_primary"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_att_worker_skill"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:text="Skill: MASON"
+            android:textColor="@color/text_secondary"
+            android:textSize="12sp" />
+
+        <RadioGroup
+            android:id="@+id/rg_attendance"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/rb_present"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Present"
+                android:textColor="@color/success"
+                android:buttonTint="@color/success"
+                android:textSize="13sp" />
+
+            <RadioButton
+                android:id="@+id/rb_half_day"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.2"
+                android:text="Half Day"
+                android:textColor="@color/warning"
+                android:buttonTint="@color/warning"
+                android:textSize="13sp" />
+
+            <RadioButton
+                android:id="@+id/rb_absent"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Absent"
+                android:textColor="@color/error"
+                android:buttonTint="@color/error"
+                android:textSize="13sp" />
+        </RadioGroup>
+
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

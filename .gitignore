@@ -1,0 +1,23 @@
+# Android
+.gradle/
+build/
+local.properties
+*.apk
+android/gradle-8.4/
+android/gradle.zip
+
+# Backend / Java
+target/
+.mvn/
+mvnw-dist.zip
+backend/mvnw-dist.zip
+*.class
+*.jar
+*.war
+*.ear
+
+# IDEs
+.idea/
+.vscode/
+*.iml
+.DS_Store

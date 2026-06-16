@@ -1,0 +1,42 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:15-alpine
+    container_name: nirman_ledger_db
+    environment:
+      POSTGRES_DB: nirman_ledger
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./database/schema.sql:/docker-entrypoint-initdb.d/schema.sql
+    networks:
+      - nirman-network
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: nirman_ledger_backend
+    ports:
+      - "8080:8080"
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/nirman_ledger
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=postgres
+      - JWT_SECRET=858af8ec30113f8c85fa6d16f8ef1d2e5b7fb85d886f7b3df6c63b7829cfbfb2
+      - JWT_EXPIRATION=86400000
+    depends_on:
+      - db
+    networks:
+      - nirman-network
+
+volumes:
+  pgdata:
+
+networks:
+  nirman-network:
+    driver: bridge
